@@ -2,6 +2,9 @@ use crate::{
     common_ports::MOST_COMMON_PORTS_100,
     model::{Port, Subdomain},
 };
+use rayon::prelude::*;
+use std::net::{SocketAddr, ToSocketAddrs};
+use std::{net::TcpStream, time::Duration};
 
 pub fn scan_ports(mut subdomain: Subdomain) -> Subdomain {
     let socket_addresses: Vec<SocketAddr> = format!("{}:1024", subdomain.domain)
