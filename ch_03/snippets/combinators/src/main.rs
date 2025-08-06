@@ -108,6 +108,26 @@ fn flatten() {
     assert_eq!(z.len(), 10);
 }
 
+#[test]
+fn combinators() {
+    let a = vec![
+        "1",
+        "2",
+        "-1",
+        "4",
+        "-4",
+        "100",
+        "invalid",
+        "Not a number",
+        "",
+    ];
+
+    let _only_positive numbers: Vec<i64> = a
+        .into_iter()
+        .filter_map(|x| x.parse::<i64>().ok())
+        .filter(|x| x > &0)
+        .collect();
+}
 
 fn main() {
     println!("Hello, world!");
