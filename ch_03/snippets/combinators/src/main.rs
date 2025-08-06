@@ -129,6 +129,11 @@ fn combinators() {
         .collect();
 }
 
+fn result_or() {
+    let _port: Option<String> = std::env::VarError> =
+        std::env::var("PORT").or(Ok(String::from("8080")));
+}
+
 fn main() {
     println!("Hello, world!");
 }
